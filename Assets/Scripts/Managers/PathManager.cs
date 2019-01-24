@@ -62,6 +62,7 @@ public class PathManager : Singleton<PathManager>
         else
         {
             //The path is drawn and confirmed, Release the KRAKEN (troops).
+            // WARNING !!!      DOES NOT WORK IF ACTIVATION IS PUT HERE!!
         }
 
         if(Input.GetKeyDown(KeyCode.A))
@@ -95,6 +96,9 @@ public class PathManager : Singleton<PathManager>
                 AddPathPoint(m_MouseHitInfo.transform.position);
                 m_InDrawingPhase = false;
                 SetTraceColor(Color.green);
+
+                // Sets active troops !!!!!!!!!!!!!! KRAKEN RELEASING AND STUFF
+                TrooperManager.Instance.ActivateTroppers();
             }
             else if (Input.GetMouseButton(0) && MouseRaycast("Obstacle"))
             {
