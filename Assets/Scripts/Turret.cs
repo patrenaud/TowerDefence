@@ -13,7 +13,11 @@ public class Turret : MonoBehaviour
     private Vector2 m_TurretAngle = new Vector2();
 
     [SerializeField]
-    private float m_FireRate = 1;
+    private float m_FireRate = 1.0f;
+    [SerializeField]
+    private float m_BulletSpeed = 3.0f;
+    [SerializeField]
+    private GameObject m_BulletPrefab;
 	
 	private void Start ()
     {
@@ -47,27 +51,52 @@ public class Turret : MonoBehaviour
 
     private void SetTurretAngle()
     {
-        m_TurretAngle = m_TargetList[0].transform.position - transform.position;
+        if (m_TargetList != null)
+        {
+            for (int i = 0; i < m_TargetList.Count; i++)
+            {
+                if(m_TargetList[i])
+                {
+                    m_TurretAngle = m_TargetList[i].transform.position - transform.position;
+                    break;
+                }
+            }
+        }
     }
 
     private void SetTarget()
     {
         if(m_TargetList != null)
         {
-            m_Target = m_TargetList[0];
+            for(int i = 0; i < m_TargetList.Count; i++)
+            {
+                if(m_TargetList[i])
+                {
+                    m_Target = m_TargetList[i];
+                    break;
+                }
+            }
         }
     }
 
     private void Fire()
     {
         // Instantiate bullet
-        // Set Destination and Velocity (In front of first troop of list)
-        Debug.Log("Fire a bullet");
+        if(m_Target != null)
+        {
+            GameObject m_BulletInstance = Instantiate(m_BulletPrefab, transform.position, Quaternion.identity);
+            TurretBullet script = m_BulletInstance.GetComponent<TurretBullet>();
+
+            // Set Destination and Velocity (In front of first troop of list)
+            Vector3 m_BulletTarget = (m_Target.transform.position - transform.position).normalized;
+            script.InitSpeed(m_BulletSpeed, m_BulletTarget);
+        }        
     }
 
 
     private void OnTriggerEnter2D(Collider2D aOther)
     {
+        Debug.Log("Target Sighted");
         m_Target = aOther.gameObject;
         m_TargetList.Add(m_Target);
         m_TargetsInRange = true;
