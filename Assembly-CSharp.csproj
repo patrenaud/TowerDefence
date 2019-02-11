@@ -62,13 +62,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Billboard.cs" />
+    <Compile Include="Assets\Scripts\Enums\EDirections.cs" />
     <Compile Include="Assets\Scripts\Enums\EDrawStates.cs" />
+    <Compile Include="Assets\Scripts\Enums\EScenes.cs" />
+    <Compile Include="Assets\Scripts\Enums\EventID.cs" />
+    <Compile Include="Assets\Scripts\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\Managers\DialogueBoxManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Singleton.cs" />
     <Compile Include="Assets\Scripts\Managers\TrooperManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TurretManager.cs" />
+    <Compile Include="Assets\Scripts\ObstacleData.cs" />
     <Compile Include="Assets\Scripts\Trooper.cs" />
     <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Scripts\TurretBullet.cs" />
