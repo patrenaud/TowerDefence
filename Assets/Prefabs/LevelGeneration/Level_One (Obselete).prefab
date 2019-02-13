@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 2569400266868063296}
   - component: {fileID: 61767673159091498}
   m_Layer: 8
-  m_Name: Level_One
+  m_Name: Level_One (Obselete)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
