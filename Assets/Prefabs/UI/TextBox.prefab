@@ -59,6 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Text: {fileID: 114582365210110922}
   m_Pannel: {fileID: 1466103215373390}
+  m_ButtonPrefab: {fileID: 114890198907927250, guid: 68c7bf88beebee644814e431dd4ea5aa,
+    type: 2}
 --- !u!114 &114582365210110922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4, g: 0.67625463, b: 0.745283, a: 0.4745098}
+  m_Color: {r: 0.4, g: 0.67625463, b: 0.745283, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

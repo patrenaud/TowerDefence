@@ -27,7 +27,7 @@ public class TurretBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D aOther)
     {
-        Destroy(gameObject);
         aOther.gameObject.GetComponent<Trooper>().GetHit(m_TurretDamage);
+        Destroy(gameObject);
     }
 }
