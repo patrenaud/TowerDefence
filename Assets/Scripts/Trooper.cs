@@ -17,7 +17,7 @@ public class Trooper : MonoBehaviour
     private Slider m_HealthBar;
     [SerializeField]
     private Canvas m_Canvas;
-    private bool isHit = false;
+    //private bool isHit = false;
 
     private int m_Health;
 
@@ -58,7 +58,7 @@ public class Trooper : MonoBehaviour
             else
             {
                 TrooperManager.Instance.KillTroop(gameObject);
-                Debug.Log("You make 1 point !!!");
+                TrooperManager.Instance.TrooperSaved();
             }
 
             if(m_PathIndex < m_Path.Count - 1)

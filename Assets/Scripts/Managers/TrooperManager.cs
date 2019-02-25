@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrooperManager : Singleton<TrooperManager>
 {
@@ -40,8 +41,18 @@ public class TrooperManager : Singleton<TrooperManager>
         get { return m_Health; }
     }
 
-	
-	private void Update ()
+    // For player score
+    private int m_TroopsSaved = 0;
+    [SerializeField]
+    private Text m_Score;
+
+    private void Start()
+    {
+        UpdateScoreUI();
+        m_Score.gameObject.SetActive(true);
+    }
+
+    private void Update ()
     {
 		if(m_TriggerSpawn)
         {
@@ -61,6 +72,17 @@ public class TrooperManager : Singleton<TrooperManager>
         m_Troops.Add(m_Trooper.GetComponent<Trooper>());
     }
 
+    private void UpdateScoreUI()
+    {
+        m_Score.text = "Troops saved : " + m_TroopsSaved.ToString();
+    }
+
+    public void RestartScoreUI()
+    {
+        m_TroopsSaved = 0;
+        UpdateScoreUI();
+    }
+
     public void ActivateTroppers()
     {
         m_TriggerSpawn = true;
@@ -70,5 +92,33 @@ public class TrooperManager : Singleton<TrooperManager>
     {
         m_Troops.Remove(trooper.GetComponent<Trooper>());
         Destroy(trooper);
+    }
+
+    public void TrooperSaved()
+    {
+        m_TroopsSaved += 1;
+        UpdateScoreUI();
+    }
+
+    public void ResetTrooperScore()
+    {
+        m_TroopsSaved = 0;
+    }
+
+    public void SpeedUpgrade1()
+    {
+        m_MoveSpeed *= 1.5f;
+    }
+
+    public void SpeedUpgrade2()
+    {
+        m_MoveSpeed /= 1.5f;
+        m_MoveSpeed *= 2.0f;
+    }
+
+    public void SpeedUpgrade3()
+    {
+        m_MoveSpeed /= 2.0f;
+        m_MoveSpeed *= 3.0f;
     }
 }
